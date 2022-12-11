@@ -20,7 +20,8 @@ public class Voyageur implements Serializable{
 	
 	String nomVoyageur;
 
-	
+
+
 	public List<Voyage> getMesvoyages() {
 		return mesvoyages;
 	}
@@ -51,6 +52,9 @@ public class Voyageur implements Serializable{
 	public Voyageur() {
 		super();
 	}
-	
-	
+
+	public Voyageur(Long idVoyageur, String nomVoyageur) {
+		this.idVoyageur = idVoyageur;
+		this.nomVoyageur = nomVoyageur;
+	}
 }
