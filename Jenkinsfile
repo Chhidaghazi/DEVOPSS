@@ -23,7 +23,7 @@ pipeline {
                 echo 'Pulling ...';
                 git branch : 'main',
                 // Get some code from a GitHub repository
-                url: 'https://github.com/Chhidaghazi/Devvops.git'
+                url: 'https://github.com/Chhidaghazi/DEVOPSS.git'
 
 
             }
