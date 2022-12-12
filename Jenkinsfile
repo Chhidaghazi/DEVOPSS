@@ -66,42 +66,49 @@ pipeline {
          }
        }
 
+stage('Build docker image 6 '){
+
+ steps{
+ script{
+ sh 'docker build -t ghazichhida/DEVOPSS .'
+ }
+ }
+ }
 
 
-//                      stage('Building our image') {
-//                   			steps {
-//                   				script {
-//                   					dockerImage = docker.build registry + ":$BUILD_NUMBER"
-//                   					}
-//                   				}
-//                   		}
-//
-//
-//
-//
-//
-//
-//
-// 	    stage('Deploy our image') {
-//                            steps {
-//                            script {
-//                                docker.withRegistry( '', registryCredential ) {
-//                                dockerImage.push()
-//                                  }
-//                               }
-//                             }
-//
-//                           }
-//
-//  stage       ('DOCKER COMPOSE') {
-//              steps {
-//                 sh 'docker-compose up -d '
-//             }
-//         }
+ stage('Docker login  7 ') {
+
+ steps {
+ sh 'echo "login Docker ...."'
+sh 'docker login -u ghazichhida -p 1456320gh'
+  }  }
+ stage('Docker push 8 ') {
+ steps {
+ sh 'echo "Docker is pushing ...."'
+sh 'docker push ghazichhida/DEVOPSS'
+ }  }
+ stage('Docker compose 9 ') {
+  steps {
+   sh 'docker-compose up -d'
+  }  } }
+post {
+ success {
+	 mail to: "ghazi.chhida@esprit.tn",
+	subject: "Pipeline Backend Success ",
+ 	body: "Welcome to DevOps project Backend : Success on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
+}
+	failure {
+          mail to: "ghazi.chhida@esprit.tn",
+           subject: "Pipeline backend Failure",
+           body: "Welcome to DevOps project Backend : Failure on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL} "
+                    }
+
+
 
 
 
 
     }
+	
 
 }
