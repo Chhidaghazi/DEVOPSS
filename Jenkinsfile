@@ -70,7 +70,7 @@ stage('Build docker image 6 '){
 
  steps{
  script{
- sh 'docker build -t ghazichhida/DEVOPSS .'
+ sh 'docker build -t ghazichhida/devopss .'
  }
  }
  }
@@ -85,7 +85,7 @@ sh 'docker login -u ghazichhida -p 1456320gh'
  stage('Docker push 8 ') {
  steps {
  sh 'echo "Docker is pushing ...."'
-sh 'docker push ghazichhida/DEVOPSS'
+sh 'docker push ghazichhida/devopss'
  }  }
  stage('Docker compose 9 ') {
   steps {
